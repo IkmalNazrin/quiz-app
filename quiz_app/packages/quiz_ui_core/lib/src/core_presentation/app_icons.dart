@@ -1,0 +1,34 @@
+import 'package:flutter/material.dart';
+
+class AppIcons {
+  static const IconData play = Icons.play_arrow_rounded;
+  static const IconData search = Icons.search_rounded;
+  static const IconData social = Icons.people_outline_rounded;
+  static const IconData editor = Icons.edit_note_rounded;
+}
+
+class AppSvgIcons {
+  static const String trophy = '''
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+  <path d="M17 3H21C21.5523 3 22 3.44772 22 4V9C22 11.3865 20.3075 13.3767 18.0673 13.8837C17.2185 16.3533 15.011 18.17 12.3333 18.5V21H16V23H8V21H11.6667V18.5C8.98897 18.17 6.78148 16.3533 5.9327 13.8837C3.69248 13.3767 2 11.3865 2 9V4C2 3.44772 2.44772 3 3 3H7V5H4V9C4 10.3015 4.83856 11.4077 6.00931 11.8318C6.91508 14.1953 9.1724 16 12 16C14.8276 16 17.0849 14.1953 17.9907 11.8318C19.1614 11.4077 20 10.3015 20 9V5H17V3ZM12 5C10.6193 5 9.5 6.11929 9.5 7.5C9.5 8.88071 10.6193 10 12 10C13.3807 10 14.5 8.88071 14.5 7.5C14.5 6.11929 13.3807 5 12 5Z"></path>
+</svg>
+''';
+
+  static const String medal = '''
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+  <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11ZM12 13C8.13401 13 5 16.134 5 20H19C19 16.134 15.866 13 12 13ZM12 21.5C13.5188 21.5 14.75 20.2688 14.75 18.75C14.75 17.2312 13.5188 16 12 16C10.4812 16 9.25 17.2312 9.25 18.75C9.25 20.2688 10.4812 21.5 12 21.5ZM7.5 7C7.5 4.51472 9.51472 2.5 12 2.5C14.4853 2.5 16.5 4.51472 16.5 7C16.5 9.48528 14.4853 11.5 12 11.5C9.51472 11.5 7.5 9.48528 7.5 7ZM10.5 18.75C10.5 17.9216 11.1716 17.25 12 17.25C12.8284 17.25 13.5 17.9216 13.5 18.75C13.5 19.5784 12.8284 20.25 12 20.25C11.1716 20.25 10.5 19.5784 10.5 18.75Z"></path>
+</svg>
+''';
+
+  static const String user = '''
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+  <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12ZM12 14C8.68629 14 6 16.6863 6 20V22H18V20C18 16.6863 15.3137 14 12 14Z"></path>
+</svg>
+''';
+
+  static const String users = '''
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+  <path d="M7 12C9.20914 12 11 10.2091 11 8C11 5.79086 9.20914 4 7 4C4.79086 4 3 5.79086 3 8C3 10.2091 4.79086 12 7 12ZM7 14C4.23858 14 2 16.2386 2 19V22H12V19C12 16.2386 9.76142 14 7 14ZM17 12C19.2091 12 21 10.2091 21 8C21 5.79086 19.2091 4 17 4C14.7909 4 13 5.79086 13 8C13 10.2091 14.7909 12 17 12ZM17 14C19.7614 14 22 16.2386 22 19V22H14V19C14 16.2386 16.2386 14 17 14Z"></path>
+</svg>
+''';
+}

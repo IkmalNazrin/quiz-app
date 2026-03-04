@@ -1,0 +1,42 @@
+name: quiz_infrastructure
+description: "Data layer, API clients, and local DB implementations for Quiz App"
+version: 1.0.0
+# publish_to: "none"
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  quiz_domain:
+    path: ../quiz_domain
+  supabase_flutter: ^2.8.3
+  drift: ^2.31.0
+  sqlite3_flutter_libs: ^0.6.0+eol
+  path_provider: ^2.1.5
+  path: ^1.9.1
+  http: ^1.5.0
+  flutter_secure_storage: ^9.2.4
+  connectivity_plus: ^6.1.0
+  google_generative_ai: ^0.4.6
+  profanity_filter: ^2.0.0
+  encrypt: ^5.0.3
+  flutter_riverpod: ^2.6.1
+  flutter_jailbreak_detection: any
+  logger: ^2.5.0
+  dartz: ^0.10.1
+  collection: ^1.19.1
+  flutter_dotenv: ^6.0.0
+
+dev_dependencies:
+  flutter:
+    sdk: flutter
+  flutter_test:
+    sdk: flutter
+  test: any
+  lints: ^5.0.0
+  drift_dev: ^2.31.0
+  build_runner: ^2.11.1
+  mocktail: ^1.0.4

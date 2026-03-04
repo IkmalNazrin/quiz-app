@@ -1,0 +1,13 @@
+﻿00:00 +0: loading C:/Projects/QuizApp/quiz_app/packages/quiz_features/test/src/features/quiz/services/offline_game_engine_test.dart
+00:00 +0: OfflineGameEngine Engine starts and emits playing state
+00:00 +1: OfflineGameEngine Engine transitions on correct answer
+00:05 +2: OfflineGameEngine Engine completes game and caches mutation
+00:13 +2 -1: OfflineGameEngine Engine completes game and caches mutation [E]
+  Expected: <1>
+    Actual: <0>
+  
+  package:matcher                                                      expect
+  package:flutter_test/src/widget_tester.dart 473:18                   expect
+  test\src\features\quiz\services\offline_game_engine_test.dart 111:7  main.<fn>.<fn>
+  
+00:13 +2 -1: Some tests failed.

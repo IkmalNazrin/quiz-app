@@ -1,0 +1,7 @@
+
+# Secrets management
+client_secret_*.json
+.env
+
+*.env
+quiz_app/.env

@@ -1,0 +1,10 @@
+name: quiz_app_workspace
+repository: https://github.com/your-org/quiz_app
+
+packages:
+  - "packages/*"
+  - "."
+
+command:
+  bootstrap:
+    usePubspecOverrides: true

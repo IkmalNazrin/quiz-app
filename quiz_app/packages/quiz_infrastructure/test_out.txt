@@ -1,0 +1,308 @@
+﻿00:00 +0: loading C:/Projects/QuizApp/quiz_app/packages/quiz_infrastructure/test/features/analytics/supabase_analytics_repository_test.dart
+flutter : Error: Couldn't resolve the package 'flutter_test' 
+in 'package:flutter_test/flutter_test.dart'.
+At line:1 char:1
++ flutter test 
+test\features\analytics\supabase_analytics_repository_te ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Error: Couldn't. 
+   ..ter_test.dart'.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Error: Couldn't resolve the package 'mocktail' in 
+'package:mocktail/mocktail.dart'.
+test/features/analytics/supabase_analytics_repository_test.dar
+t:1:8: Error: Not found: 
+'package:flutter_test/flutter_test.dart'
+import 'package:flutter_test/flutter_test.dart';
+       ^
+test/features/analytics/supabase_analytics_repository_test.dar
+t:2:8: Error: Not found: 'package:mocktail/mocktail.dart'
+import 'package:mocktail/mocktail.dart';
+       ^
+test/features/analytics/supabase_analytics_repository_test.dar
+t:6:34: Error: Type 'Mock' not found.
+class MockSupabaseClient extends Mock implements 
+SupabaseClient {}
+                                 ^^^^
+test/features/analytics/supabase_analytics_repository_test.dar
+t:6:7: Error: The non-abstract class 'MockSupabaseClient' is 
+missing implementations for these members:
+ - SupabaseClient.accessToken
+ - SupabaseClient.auth
+ - SupabaseClient.channel
+ - SupabaseClient.dispose
+ - SupabaseClient.from
+ - SupabaseClient.functions
+ - SupabaseClient.getChannels
+ - SupabaseClient.headers
+ - SupabaseClient.headers=
+ - SupabaseClient.realtime
+ - SupabaseClient.removeAllChannels
+ - SupabaseClient.removeChannel
+ - SupabaseClient.rest
+ - SupabaseClient.rpc
+ - SupabaseClient.schema
+ - SupabaseClient.storage
+Try to either
+ - provide an implementation,
+ - inherit an implementation from a superclass or mixin,
+ - mark the class as abstract, or
+ - provide a 'noSuchMethod' implementation.
+class MockSupabaseClient extends Mock implements 
+SupabaseClient {}
+      ^^^^^^^^^^^^^^^^^^
+/C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase
+-2.10.2/lib/src/supabase_client.dart:67:37: Context: 
+'SupabaseClient.accessToken' is defined here.
+  final Future<String?> Function()? accessToken;
+                                    ^^^^^^^^^^^
+/C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase
+-2.10.2/lib/src/supabase_client.dart:164:20: Context: 
+'SupabaseClient.auth' is defined here.
+  GoTrueClient get auth {
+                   ^^^^
+/C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase
+-2.10.2/lib/src/supabase_client.dart:217:19: Context: 
+'SupabaseClient.channel' is defined here.
+  RealtimeChannel channel(String name,
+                  ^^^^^^^
+/C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase
+-2.10.2/lib/src/supabase_client.dart:272:16: Context: 
+'SupabaseClient.dispose' is defined here.
+  Future<void> dispose() async {
+               ^^^^^^^
+/C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase
+-2.10.2/lib/src/supabase_client.dart:175:24: Context: 
+'SupabaseClient.from' is defined here.
+  SupabaseQueryBuilder from(String table) {
+                       ^^^^
+/C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase
+-2.10.2/lib/src/supabase_client.dart:59:30: Context: 
+'SupabaseClient.functions' is defined here.
+  late final FunctionsClient functions;
+                             ^^^^^^^^^
+/C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase
+-2.10.2/lib/src/supabase_client.dart:223:25: Context: 
+'SupabaseClient.getChannels' is defined here.
+  List<RealtimeChannel> getChannels() {
+                        ^^^^^^^^^^^
+/C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase
+-2.10.2/lib/src/supabase_client.dart:75:27: Context: 
+'SupabaseClient.headers' is defined here.
+  Map<String, String> get headers {
+                          ^^^^^^^
+/C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase
+-2.10.2/lib/src/supabase_client.dart:80:7: Context: 
+'SupabaseClient.headers=' is defined here.
+  set headers(Map<String, String> headers) {
+      ^^^^^^^
+/C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase
+-2.10.2/lib/src/supabase_client.dart:63:29: Context: 
+'SupabaseClient.realtime' is defined here.
+  late final RealtimeClient realtime;
+                            ^^^^^^^^
+/C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase
+-2.10.2/lib/src/supabase_client.dart:235:24: Context: 
+'SupabaseClient.removeAllChannels' is defined here.
+  Future<List<String>> removeAllChannels() {
+                       ^^^^^^^^^^^^^^^^^
+/C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase
+-2.10.2/lib/src/supabase_client.dart:230:18: Context: 
+'SupabaseClient.removeChannel' is defined here.
+  Future<String> removeChannel(RealtimeChannel channel) {
+                 ^^^^^^^^^^^^^
+/C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase
+-2.10.2/lib/src/supabase_client.dart:64:30: Context: 
+'SupabaseClient.rest' is defined here.
+  late final PostgrestClient rest;
+                             ^^^^
+/C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase
+-2.10.2/lib/src/supabase_client.dart:207:29: Context: 
+'SupabaseClient.rpc' is defined here.
+  PostgrestFilterBuilder<T> rpc<T>(
+                            ^^^
+/C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase
+-2.10.2/lib/src/supabase_client.dart:192:23: Context: 
+'SupabaseClient.schema' is defined here.
+  SupabaseQuerySchema schema(String schema) {
+                      ^^^^^^
+/C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase
+-2.10.2/lib/src/supabase_client.dart:62:36: Context: 
+'SupabaseClient.storage' is defined here.
+  late final SupabaseStorageClient storage;
+                                   ^^^^^^^
+test/features/analytics/supabase_analytics_repository_test.dar
+t:12:3: Error: Method not found: 'setUp'.
+  setUp(() {
+  ^^^^^
+test/features/analytics/supabase_analytics_repository_test.dar
+t:21:21: Error: Method not found: 'any'.
+            params: any(named: 'params'),
+                    ^^^
+test/features/analytics/supabase_analytics_repository_test.dar
+t:19:7: Error: Method not found: 'when'.
+      when(() => mockClient.rpc(
+      ^^^^
+test/features/analytics/supabase_analytics_repository_test.dar
+t:26:7: Error: Method not found: 'expect'.
+      expect(result['total_games'], 5);
+      ^^^^^^
+test/features/analytics/supabase_analytics_repository_test.dar
+t:27:7: Error: Method not found: 'verify'.
+      verify(() => mockClient.rpc(
+      ^^^^^^
+test/features/analytics/supabase_analytics_repository_test.dar
+t:18:5: Error: Method not found: 'test'.
+    test('getHostStats calls rpc get_host_analytics_summary', 
+() async {
+    ^^^^
+test/features/analytics/supabase_analytics_repository_test.dar
+t:36:21: Error: Method not found: 'any'.
+            params: any(named: 'params'),
+                    ^^^
+test/features/analytics/supabase_analytics_repository_test.dar
+t:34:7: Error: Method not found: 'when'.
+      when(() => mockClient.rpc(
+      ^^^^
+test/features/analytics/supabase_analytics_repository_test.dar
+t:41:7: Error: Method not found: 'expect'.
+      expect(result['average_score'], 850);
+      ^^^^^^
+test/features/analytics/supabase_analytics_repository_test.dar
+t:42:7: Error: Method not found: 'verify'.
+      verify(() => mockClient.rpc(
+      ^^^^^^
+test/features/analytics/supabase_analytics_repository_test.dar
+t:33:5: Error: Method not found: 'test'.
+    test('getQuizStats calls rpc 
+get_quiz_analytics_detailed', () async {
+    ^^^^
+test/features/analytics/supabase_analytics_repository_test.dar
+t:17:3: Error: Method not found: 'group'.
+  group('SupabaseAnalyticsRepository', () {
+  ^^^^^
+00:00 +0 -1: loading C:/Projects/QuizApp/quiz_app/packages/quiz_infrastructure/test/features/analytics/supabase_analytics_repository_test.dart [E]
+  Failed to load "C:/Projects/QuizApp/quiz_app/packages/quiz_infrastructure/test/features/analytics/supabase_analytics_repository_test.dart":
+  Compilation failed for testPath=C:/Projects/QuizApp/quiz_app/packages/quiz_infrastructure/test/features/analytics/supabase_analytics_repository_test.dart: Error: Couldn't resolve the package 'flutter_test' in 'package:flutter_test/flutter_test.dart'.
+  Error: Couldn't resolve the package 'mocktail' in 'package:mocktail/mocktail.dart'.
+  test/features/analytics/supabase_analytics_repository_test.dart:1:8: Error: Not found: 'package:flutter_test/flutter_test.dart'
+  import 'package:flutter_test/flutter_test.dart';
+         ^
+  test/features/analytics/supabase_analytics_repository_test.dart:2:8: Error: Not found: 'package:mocktail/mocktail.dart'
+  import 'package:mocktail/mocktail.dart';
+         ^
+  test/features/analytics/supabase_analytics_repository_test.dart:6:34: Error: Type 'Mock' not found.
+  class MockSupabaseClient extends Mock implements SupabaseClient {}
+                                   ^^^^
+  test/features/analytics/supabase_analytics_repository_test.dart:6:7: Error: The non-abstract class 'MockSupabaseClient' is missing implementations for these members:
+   - SupabaseClient.accessToken
+   - SupabaseClient.auth
+   - SupabaseClient.channel
+   - SupabaseClient.dispose
+   - SupabaseClient.from
+   - SupabaseClient.functions
+   - SupabaseClient.getChannels
+   - SupabaseClient.headers
+   - SupabaseClient.headers=
+   - SupabaseClient.realtime
+   - SupabaseClient.removeAllChannels
+   - SupabaseClient.removeChannel
+   - SupabaseClient.rest
+   - SupabaseClient.rpc
+   - SupabaseClient.schema
+   - SupabaseClient.storage
+  Try to either
+   - provide an implementation,
+   - inherit an implementation from a superclass or mixin,
+   - mark the class as abstract, or
+   - provide a 'noSuchMethod' implementation.
+  class MockSupabaseClient extends Mock implements SupabaseClient {}
+        ^^^^^^^^^^^^^^^^^^
+  /C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase-2.10.2/lib/src/supabase_client.dart:67:37: Context: 'SupabaseClient.accessToken' is defined here.
+    final Future<String?> Function()? accessToken;
+                                      ^^^^^^^^^^^
+  /C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase-2.10.2/lib/src/supabase_client.dart:164:20: Context: 'SupabaseClient.auth' is defined here.
+    GoTrueClient get auth {
+                     ^^^^
+  /C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase-2.10.2/lib/src/supabase_client.dart:217:19: Context: 'SupabaseClient.channel' is defined here.
+    RealtimeChannel channel(String name,
+                    ^^^^^^^
+  /C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase-2.10.2/lib/src/supabase_client.dart:272:16: Context: 'SupabaseClient.dispose' is defined here.
+    Future<void> dispose() async {
+                 ^^^^^^^
+  /C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase-2.10.2/lib/src/supabase_client.dart:175:24: Context: 'SupabaseClient.from' is defined here.
+    SupabaseQueryBuilder from(String table) {
+                         ^^^^
+  /C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase-2.10.2/lib/src/supabase_client.dart:59:30: Context: 'SupabaseClient.functions' is defined here.
+    late final FunctionsClient functions;
+                               ^^^^^^^^^
+  /C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase-2.10.2/lib/src/supabase_client.dart:223:25: Context: 'SupabaseClient.getChannels' is defined here.
+    List<RealtimeChannel> getChannels() {
+                          ^^^^^^^^^^^
+  /C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase-2.10.2/lib/src/supabase_client.dart:75:27: Context: 'SupabaseClient.headers' is defined here.
+    Map<String, String> get headers {
+                            ^^^^^^^
+  /C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase-2.10.2/lib/src/supabase_client.dart:80:7: Context: 'SupabaseClient.headers=' is defined here.
+    set headers(Map<String, String> headers) {
+        ^^^^^^^
+  /C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase-2.10.2/lib/src/supabase_client.dart:63:29: Context: 'SupabaseClient.realtime' is defined here.
+    late final RealtimeClient realtime;
+                              ^^^^^^^^
+  /C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase-2.10.2/lib/src/supabase_client.dart:235:24: Context: 'SupabaseClient.removeAllChannels' is defined here.
+    Future<List<String>> removeAllChannels() {
+                         ^^^^^^^^^^^^^^^^^
+  /C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase-2.10.2/lib/src/supabase_client.dart:230:18: Context: 'SupabaseClient.removeChannel' is defined here.
+    Future<String> removeChannel(RealtimeChannel channel) {
+                   ^^^^^^^^^^^^^
+  /C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase-2.10.2/lib/src/supabase_client.dart:64:30: Context: 'SupabaseClient.rest' is defined here.
+    late final PostgrestClient rest;
+                               ^^^^
+  /C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase-2.10.2/lib/src/supabase_client.dart:207:29: Context: 'SupabaseClient.rpc' is defined here.
+    PostgrestFilterBuilder<T> rpc<T>(
+                              ^^^
+  /C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase-2.10.2/lib/src/supabase_client.dart:192:23: Context: 'SupabaseClient.schema' is defined here.
+    SupabaseQuerySchema schema(String schema) {
+                        ^^^^^^
+  /C:/Users/ReiN/AppData/Local/Pub/Cache/hosted/pub.dev/supabase-2.10.2/lib/src/supabase_client.dart:62:36: Context: 'SupabaseClient.storage' is defined here.
+    late final SupabaseStorageClient storage;
+                                     ^^^^^^^
+  test/features/analytics/supabase_analytics_repository_test.dart:12:3: Error: Method not found: 'setUp'.
+    setUp(() {
+    ^^^^^
+  test/features/analytics/supabase_analytics_repository_test.dart:21:21: Error: Method not found: 'any'.
+              params: any(named: 'params'),
+                      ^^^
+  test/features/analytics/supabase_analytics_repository_test.dart:19:7: Error: Method not found: 'when'.
+        when(() => mockClient.rpc(
+        ^^^^
+  test/features/analytics/supabase_analytics_repository_test.dart:26:7: Error: Method not found: 'expect'.
+        expect(result['total_games'], 5);
+        ^^^^^^
+  test/features/analytics/supabase_analytics_repository_test.dart:27:7: Error: Method not found: 'verify'.
+        verify(() => mockClient.rpc(
+        ^^^^^^
+  test/features/analytics/supabase_analytics_repository_test.dart:18:5: Error: Method not found: 'test'.
+      test('getHostStats calls rpc get_host_analytics_summary', () async {
+      ^^^^
+  test/features/analytics/supabase_analytics_repository_test.dart:36:21: Error: Method not found: 'any'.
+              params: any(named: 'params'),
+                      ^^^
+  test/features/analytics/supabase_analytics_repository_test.dart:34:7: Error: Method not found: 'when'.
+        when(() => mockClient.rpc(
+        ^^^^
+  test/features/analytics/supabase_analytics_repository_test.dart:41:7: Error: Method not found: 'expect'.
+        expect(result['average_score'], 850);
+        ^^^^^^
+  test/features/analytics/supabase_analytics_repository_test.dart:42:7: Error: Method not found: 'verify'.
+        verify(() => mockClient.rpc(
+        ^^^^^^
+  test/features/analytics/supabase_analytics_repository_test.dart:33:5: Error: Method not found: 'test'.
+      test('getQuizStats calls rpc get_quiz_analytics_detailed', () async {
+      ^^^^
+  test/features/analytics/supabase_analytics_repository_test.dart:17:3: Error: Method not found: 'group'.
+    group('SupabaseAnalyticsRepository', () {
+    ^^^^^
+  .
+00:00 +0 -1: Some tests failed.
