@@ -85,11 +85,12 @@ serve(async (req) => {
                     user_id: user.id,
                     question_index: session.current_question_index,
                     is_correct: isCorrect,
-                    // In a real app, 'points' column would need to exist on game_answers if storing it
+                    answer_index: answerIndex,
+                    points: points,
                 });
 
-            // Note: game_answers table from Migration 006 does not have a `points` column. 
-            // We update game_participants score directly to grant points instead safely via RPC.
+            // Update game_participants score atomically via SECURITY DEFINER RPC
+            // to defend against read-then-write race conditions.
             if (!insertError && points !== 0) {
                 const { error: scoreError } = await supabaseClient.rpc(
                     "increment_participant_score",
