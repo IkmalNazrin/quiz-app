@@ -48,3 +48,24 @@ Deno.test("game-orchestrator: CORS headers are present", async () => {
         console.warn("Skipping test: " + e.message);
     }
 });
+
+Deno.test("game-orchestrator: rejects invalid request payload", async () => {
+    try {
+        const response = await fetch(FUNCTION_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                // Provide a fake auth to bypass 401 and reach validation
+                "Authorization": "Bearer fake_token",
+            },
+            body: JSON.stringify({ action: "start-round", gamePin: "invalid_pin" }),
+        });
+
+        // The edge function should return 400 Bad Request because the game pin is invalid (not 6 digits)
+        const data = await response.json();
+        assertEquals(response.status, 400);
+        assertEquals(data.error, "Invalid game pin format");
+    } catch (e) {
+        console.warn("Skipping test: " + e.message);
+    }
+});

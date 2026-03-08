@@ -17,5 +17,23 @@ export async function securityMiddleware(req: Request) {
         return new Response('Access denied for your region', { status: 403 });
     }
 
+    // 2. Content-Type Validation
+    const contentType = req.headers.get("content-type");
+    if (req.method === "POST" && (!contentType || !contentType.includes("application/json"))) {
+        return new Response(JSON.stringify({ error: "Unsupported Media Type: expected application/json" }), {
+            status: 415,
+            headers: { "Content-Type": "application/json" }
+        });
+    }
+
+    // 3. Request Body Size Limit (1MB)
+    const contentLength = req.headers.get("content-length");
+    if (contentLength && parseInt(contentLength, 10) > 1024 * 1024) {
+        return new Response(JSON.stringify({ error: "Payload Too Large: maximum size is 1MB" }), {
+            status: 413,
+            headers: { "Content-Type": "application/json" }
+        });
+    }
+
     return null; // All checks passed
 }

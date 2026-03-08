@@ -48,10 +48,7 @@ Future<void> main() async {
 
   AppLogger.i('Application starting...', category: LogCategory.system);
 
-  // Device Integrity checking is currently unimplemented.
-  // The integrityService.isDeviceCompromised() acts as a placeholder.
-  // In the future, we will enforce Firebase App Check or DeviceCheck here
-  // and halt the application if the device fails integrity checks.
+  // Enforce Device Integrity. ADR-026 mandates a fail-closed posture.
   final integrityService = DeviceIntegrityService();
   final isCompromised = await integrityService.isDeviceCompromised();
 
@@ -63,8 +60,13 @@ Future<void> main() async {
 
 
 
-  runApp(ProviderScope(
-    overrides: appProviderOverrides,
+  final container = ProviderContainer(overrides: appProviderOverrides);
+  
+  // Validate DI wiring in debug mode to prevent UnimplementedError crashes
+  assertDIComplete(container);
+
+  runApp(UncontrolledProviderScope(
+    container: container,
     child: const MyApp(),
   ));
 }

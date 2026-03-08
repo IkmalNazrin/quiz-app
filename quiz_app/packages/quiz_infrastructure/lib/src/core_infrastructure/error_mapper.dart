@@ -2,7 +2,9 @@ import 'dart:io';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:dartz/dartz.dart';
 import 'package:quiz_domain/quiz_domain.dart';
-import 'services/logger_service.dart';
+import 'logger_impl.dart';
+
+import 'package:flutter/foundation.dart';
 
 /// Centralized error-to-Failure mapper for all infrastructure operations.
 /// Captures stack traces and logs before converting to domain failures.
@@ -11,11 +13,7 @@ Either<Failure, T> mapExceptionToFailure<T>(
   StackTrace stackTrace,
   String operationName,
 ) {
-  AppLogger.e(
-    '$operationName failed: $error',
-    category: LogCategory.infrastructure,
-    // stackTrace: stackTrace, // If AppLogger supports it
-  );
+  debugPrint('[$operationName] failed: $error');
 
   if (error is Failure) return Left(error);
   if (error is AuthException) return Left(AuthFailure(error.message));

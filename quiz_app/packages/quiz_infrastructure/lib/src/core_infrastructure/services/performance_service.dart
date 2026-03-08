@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import '../services/logger_service.dart';
+import '../logger_impl.dart';
 import 'package:quiz_infrastructure/quiz_infrastructure.dart';
 
 /// A simple utility to trace performance and identify bottlenecks.

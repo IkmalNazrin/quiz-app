@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import '../services/logger_service.dart';
+import '../logger_impl.dart';
 import 'package:quiz_infrastructure/quiz_infrastructure.dart';
 
 /// A centralized service for reporting errors throughout the application.

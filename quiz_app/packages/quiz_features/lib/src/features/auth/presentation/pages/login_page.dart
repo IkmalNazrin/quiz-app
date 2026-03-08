@@ -35,7 +35,7 @@ class _LoginPageState extends ConsumerState<LoginPage>
         serverClientId: clientId,
       );
     } catch (e) {
-      AppLogger.e('Failed to initialize Google Sign-In: $e', category: LogCategory.system);
+      debugPrint('Failed to initialize Google Sign-In: $e');
     }
   }
 

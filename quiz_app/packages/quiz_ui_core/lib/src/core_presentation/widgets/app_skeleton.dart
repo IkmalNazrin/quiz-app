@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:quiz_features/quiz_features.dart';
+
 import '../design_system.dart';
 
 /// The core skeleton widget that provides the shimmer effect.

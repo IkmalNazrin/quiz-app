@@ -104,7 +104,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen>
       try {
         await newFuture;
       } catch (e) {
-        AppLogger.e("Data fetch failed: $e", category: LogCategory.ui);
+        debugPrint("Data fetch failed: $e");
       }
     }
   }

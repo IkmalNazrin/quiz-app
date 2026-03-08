@@ -1,7 +1,51 @@
-
-# Secrets management
+# ===========================
+# Secrets & Credentials
+# ===========================
 client_secret_*.json
 .env
-
 *.env
 quiz_app/.env
+override_vars.ps1
+
+# ===========================
+# Flutter / Dart
+# ===========================
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+build/
+*.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# ===========================
+# IDE & Editor
+# ===========================
+.idea/
+.vscode/
+*.iml
+melos_quiz_app.iml
+
+# ===========================
+# OS
+# ===========================
+Thumbs.db
+.DS_Store
+
+# ===========================
+# Supabase local
+# ===========================
+supabase/.temp/
+quiz_app/supabase/.temp/
+
+# ===========================
+# Build Artifacts & Logs
+# ===========================
+quiz_app/build/
+server/node_modules/
+*.log
+test_log_infra.txt
+vault_err.json
+vault_err.txt
+quiz_app/test_output.txt

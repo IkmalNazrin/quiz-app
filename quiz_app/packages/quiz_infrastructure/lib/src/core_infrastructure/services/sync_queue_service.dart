@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:quiz_infrastructure/quiz_infrastructure.dart';
 import 'connectivity_service.dart';
-import 'logger_service.dart';
+import '../logger_impl.dart';
 
 // Note: PendingAction class is now partially superseded by OfflineMutations table.
 // We'll map the Drift table row back to a similar object to keep the signature.

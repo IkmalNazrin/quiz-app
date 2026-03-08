@@ -115,3 +115,45 @@ final appProviderOverrides = <Override>[
     (ref) => LegalRepositoryImpl(),
   ),
 ];
+
+/// Validates that all DI overrides for UnimplementedError stubs are wired.
+/// Call this in main.dart after the ProviderScope is created.
+/// This catches misconfiguration at app launch in debug mode instead of crashing at runtime.
+void assertDIComplete(ProviderContainer container) {
+  assert(() {
+    final requiredProviders = [
+      legalRepositoryProvider,
+      offlineSyncRepositoryProvider,
+      storageServiceProvider,
+      gameRealtimeServiceProvider,
+      connectivityServiceProvider,
+      hostGameEngineFactoryProvider,
+      syncQueueServiceProvider,
+      gameRepositoryProvider,
+      authRepositoryProvider,
+      organizationRepositoryProvider,
+      quizRepositoryProvider,
+      profileRepositoryProvider,
+      historyRepositoryProvider,
+      analyticsRepositoryProvider,
+      privacyRepositoryProvider,
+      challengeRepositoryProvider,
+      leaderboardRepositoryProvider,
+      aiGatewayProvider,
+      offlineQuizRepositoryProvider,
+    ];
+
+    for (final provider in requiredProviders) {
+      try {
+        container.read(provider);
+      } catch (e) {
+        if (e is UnimplementedError) {
+          throw StateError('CRITICAL: Missing DI override for $provider. The app will crash if this feature is used.');
+        } else {
+          // Other errors during read (e.g. initialization errors) are fine for this check
+        }
+      }
+    }
+    return true;
+  }());
+}

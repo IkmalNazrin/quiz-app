@@ -184,7 +184,7 @@ class _FinalScoreboardScreenState extends ConsumerState<FinalScoreboardScreen> {
         }
       }
     } catch (e) {
-      AppLogger.e('Error determining details: $e', category: LogCategory.ui);
+      debugPrint('Error determining details: $e');
     }
   }
 
@@ -229,7 +229,7 @@ class _FinalScoreboardScreenState extends ConsumerState<FinalScoreboardScreen> {
     final result =
         await ref.read(quizRepositoryProvider).rateQuiz(widget.quizId, rating);
     result.fold(
-      (failure) => AppLogger.e('Error rating quiz: ${failure.message}', category: LogCategory.ui),
+      (failure) => debugPrint('Error rating quiz: ${failure.message}'),
       (_) => ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Thanks for your feedback!'))),
     );
@@ -275,7 +275,7 @@ class _FinalScoreboardScreenState extends ConsumerState<FinalScoreboardScreen> {
     final result = await ref.read(quizRepositoryProvider).getPublicQuizzes();
     result.fold(
       (failure) =>
-          AppLogger.e("Could not check if quiz is public: ${failure.message}", category: LogCategory.ui),
+          debugPrint("Could not check if quiz is public: ${failure.message}"),
       (quizzes) {
         if (mounted) {
           final isPublic = quizzes.any((q) => q.id == widget.quizId);

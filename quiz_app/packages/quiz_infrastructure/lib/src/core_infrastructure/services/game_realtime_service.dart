@@ -1,7 +1,7 @@
 import 'package:quiz_domain/quiz_domain.dart';
 import 'dart:async';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import '../services/logger_service.dart';
+import '../logger_impl.dart';
 import 'package:quiz_infrastructure/quiz_infrastructure.dart';
 
 /// Service responsible for managing Supabase Realtime Channels,

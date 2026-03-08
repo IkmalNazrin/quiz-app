@@ -12,7 +12,7 @@ export 'src/core_infrastructure/services/error_reporter_service.dart';
 export 'src/core_infrastructure/services/game_realtime_service.dart';
 export 'src/services/online_host_game_engine.dart';
 export 'src/core_infrastructure/services/integrity_service.dart';
-export 'src/core_infrastructure/services/logger_service.dart';
+
 export 'src/core_infrastructure/services/media_transformation_service.dart';
 export 'src/core_infrastructure/services/performance_service.dart';
 export 'src/core_infrastructure/services/rate_limiter.dart';

@@ -1,5 +1,7 @@
 -- Atomic score increment for game participants
 -- Defends against read-then-write race conditions when multiple rapid answers are submitted.
+-- Drop existing function to allow parameter rename (remote has p_increment, we use p_points)
+DROP FUNCTION IF EXISTS increment_participant_score(UUID, UUID, INTEGER);
 CREATE OR REPLACE FUNCTION increment_participant_score(
   p_session_id UUID,
   p_user_id UUID,

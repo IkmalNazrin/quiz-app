@@ -115,7 +115,7 @@ class _ConsentScreenState extends ConsumerState<ConsentScreen> {
       child: GestureDetector(
         onTap: () {
           // In a real app, use url_launcher
-          AppLogger.d('Opening $url', category: LogCategory.ui);
+          debugPrint('Opening $url');
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text('Opening $text...')),
           );

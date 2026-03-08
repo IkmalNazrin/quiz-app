@@ -139,7 +139,7 @@ class _ChallengeLoadingScreenState
         },
       );
     } catch (e) {
-      AppLogger.e('Error loading challenge: $e', category: LogCategory.ui);
+      debugPrint('Error loading challenge: $e');
       if (mounted) {
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text('Error: $e')));
@@ -180,7 +180,7 @@ class _ChallengeLoadingScreenState
         }
       });
     } catch (e) {
-      AppLogger.e('Error sending challenge: $e', category: LogCategory.ui);
+      debugPrint('Error sending challenge: $e');
     }
   }
 

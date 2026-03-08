@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_jailbreak_detection/flutter_jailbreak_detection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
-import 'logger_service.dart';
+import '../logger_impl.dart';
 import 'package:quiz_infrastructure/quiz_infrastructure.dart';
 
 final deviceIntegrityProvider = Provider<DeviceIntegrityService>((ref) {

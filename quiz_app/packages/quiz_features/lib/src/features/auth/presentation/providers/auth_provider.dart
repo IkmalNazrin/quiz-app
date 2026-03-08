@@ -105,8 +105,8 @@ class AuthNotifier extends StateNotifier<AsyncValue<UserEntity?>> {
         // Sync profile
         final syncResult = await _syncProfile(user);
         syncResult.fold(
-          (failure) => AppLogger.e("Profile sync failed: ${failure.message}", category: LogCategory.system),
-          (_) => AppLogger.i("Profile sync: Success for user ${user.id}", category: LogCategory.system),
+          (failure) => debugPrint("Profile sync failed: ${failure.message}"),
+          (_) => debugPrint("Profile sync: Success for user ${user.id}"),
         );
       },
     );

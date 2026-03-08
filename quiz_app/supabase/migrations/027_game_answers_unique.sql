@@ -3,12 +3,14 @@
 -- Purpose: Prevent duplicate answer submissions per question
 -- ==========================================
 
--- Clean up any existing duplicates before applying the constraint (keep the first submission)
-DELETE FROM public.game_answers
-WHERE id NOT IN (
-    SELECT MIN(id)
-    FROM public.game_answers
-    GROUP BY session_id, user_id, question_index
+-- Clean up any existing duplicates before applying the constraint (keep one per group)
+DELETE FROM public.game_answers ga
+WHERE EXISTS (
+    SELECT 1 FROM public.game_answers ga2
+    WHERE ga2.session_id = ga.session_id
+    AND ga2.user_id = ga.user_id
+    AND ga2.question_index = ga.question_index
+    AND ga2.ctid < ga.ctid
 );
 
 ALTER TABLE public.game_answers

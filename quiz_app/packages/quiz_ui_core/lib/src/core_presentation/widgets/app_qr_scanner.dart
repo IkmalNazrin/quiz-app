@@ -59,29 +59,7 @@ class _AppQRScannerState extends State<AppQRScanner>
           MobileScanner(
             controller: _controller,
             onDetect: _handleScan,
-            errorBuilder: (context, error) {
-              return Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(Icons.error_outline,
-                        color: AppColors.error, size: 48),
-                    const SizedBox(height: 16),
-                    Text(
-                      'Camera Error: ${error.errorCode}',
-                      style: AppTypography.bodyMedium
-                          .copyWith(color: Colors.white),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'Please enable camera permissions in settings.',
-                      style: AppTypography.bodySmall
-                          .copyWith(color: Colors.white70),
-                    ),
-                  ],
-                ),
-              );
-            },
+
           ),
 
           // Overlay

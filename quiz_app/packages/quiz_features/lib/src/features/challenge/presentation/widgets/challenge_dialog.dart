@@ -62,7 +62,7 @@ class _ChallengeDialogState extends State<ChallengeDialog> {
         });
       }
     } catch (e) {
-      AppLogger.e('Error searching users: $e', category: LogCategory.ui);
+      debugPrint('Error searching users: $e');
       if (mounted) setState(() => _isLoading = false);
     }
   }

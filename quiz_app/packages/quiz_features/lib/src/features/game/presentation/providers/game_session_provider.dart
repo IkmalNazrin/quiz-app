@@ -78,7 +78,7 @@ class GameSessionNotifier extends StateNotifier<GameEntity> {
     this.hostGameEngineFactory,
   ) : super(const GameEntity(socketStatus: 'connected')) {
     _lobbyThrottler = Throttler(delay: const Duration(seconds: 3));
-    AppLogger.i('Initializing GameSessionNotifier', category: LogCategory.system);
+    debugPrint('Initializing GameSessionNotifier');
     _setupListeners();
     _setupSyncListeners();
   }
@@ -92,7 +92,7 @@ class GameSessionNotifier extends StateNotifier<GameEntity> {
   void _setupListeners() {
     // 1. Listen for Presence updates (Players list)
     realtimeService.playersStream.listen((playerList) {
-      AppLogger.d('Presence Update: ${playerList.length} players', category: LogCategory.system);
+      debugPrint('Presence Update: ${playerList.length} players');
       state = state.copyWith(players: playerList);
     });
 
@@ -101,7 +101,7 @@ class GameSessionNotifier extends StateNotifier<GameEntity> {
       final event = payload['event'] as String?;
       final data = payload['payload'] as Map<String, dynamic>? ?? {};
 
-      AppLogger.d('Broadcast received in Notifier: $event', category: LogCategory.system);
+      debugPrint('Broadcast received in Notifier: $event');
 
       switch (event) {
         case 'game-started':
@@ -121,7 +121,7 @@ class GameSessionNotifier extends StateNotifier<GameEntity> {
           break;
 
         case 'new-question':
-          AppLogger.d('New Question Received: ${data['question']}', category: LogCategory.system);
+          debugPrint('New Question Received: ${data['question']}');
           _handleNewQuestion(data);
           break;
 
@@ -130,7 +130,7 @@ class GameSessionNotifier extends StateNotifier<GameEntity> {
           break;
 
         case 'timer-accelerated':
-          AppLogger.d('Timer accelerated', category: LogCategory.system);
+          debugPrint('Timer accelerated');
           // If server provided a new roundEndsAt, update it
           final newRoundEndsAt = data['roundEndsAt'] as String?;
           state = state.copyWith(
@@ -143,12 +143,12 @@ class GameSessionNotifier extends StateNotifier<GameEntity> {
           break;
 
         case 'round-over':
-          AppLogger.d('Round over received', category: LogCategory.system);
+          debugPrint('Round over received');
           _handleRoundOver(data);
           break;
 
         case 'final-results':
-          AppLogger.i('Final results received', category: LogCategory.system);
+          debugPrint('Final results received');
           await HapticService.success();
           state = state.copyWith(status: 'finished', finalResults: data);
           break;
@@ -160,7 +160,7 @@ class GameSessionNotifier extends StateNotifier<GameEntity> {
 
           if (kickedUserId != null) {
             if (kickedUserId == myId) {
-              AppLogger.w('I have been kicked/banned from the game', category: LogCategory.system);
+              debugPrint('I have been kicked/banned from the game');
               state = state.copyWith(status: isBan ? 'banned' : 'kicked');
               await disconnect();
             } else {
@@ -270,7 +270,7 @@ class GameSessionNotifier extends StateNotifier<GameEntity> {
         }
       }
     } catch (e, s) {
-      AppLogger.e('Error calculating streak/points: $e', category: LogCategory.system);
+      debugPrint('Error calculating streak/points: $e');
     }
 
     state = state.copyWith(
@@ -283,12 +283,12 @@ class GameSessionNotifier extends StateNotifier<GameEntity> {
 
   // Actions
   Future<void> connect() async {
-    AppLogger.i('Connecting GameSession', category: LogCategory.system);
+    debugPrint('Connecting GameSession');
     await repository.connect();
   }
 
   Future<void> disconnect() async {
-    AppLogger.i('Disconnecting GameSession and Resetting State', category: LogCategory.system);
+    debugPrint('Disconnecting GameSession and Resetting State');
     _hostEngine?.dispose();
     _hostEngine = null;
     await repository.disconnect();
@@ -319,12 +319,12 @@ class GameSessionNotifier extends StateNotifier<GameEntity> {
     // Check if authenticated, if not sign in anonymously
     final loggedIn = await authRepository.isLoggedIn();
     if (!loggedIn) {
-      AppLogger.i(
-          'User not logged in, signing in anonymously for guest access', category: LogCategory.system);
+      debugPrint(
+          'User not logged in, signing in anonymously for guest access');
       final authResult = await authRepository.signInAnonymously();
 
       if (authResult.isLeft()) {
-        AppLogger.e('Failed to sign in anonymously', category: LogCategory.system);
+        debugPrint('Failed to sign in anonymously');
         state = state.copyWith(socketStatus: 'error');
         return;
       }
@@ -350,8 +350,8 @@ class GameSessionNotifier extends StateNotifier<GameEntity> {
       final quizResult = await quizRepository.getQuizDetails(quizId);
 
       quizResult.fold(
-          (failure) => AppLogger.e(
-              'Failed to fetch quiz for engine: ${failure.message}', category: LogCategory.system), (quiz) {
+          (failure) => debugPrint(
+              'Failed to fetch quiz for engine: ${failure.message}'), (quiz) {
         _hostEngine = hostGameEngineFactory(quiz, int.tryParse(state.timerOverride.toString()));
         _hostEngine!.setManualFlow(state.isManualFlow);
         _hostEngine!.startGame();
@@ -391,7 +391,7 @@ class GameSessionNotifier extends StateNotifier<GameEntity> {
           .broadcastEvent('player-kicked', {'userId': userId, 'isBan': false});
 
       // Log the kick (handled by repository layer)
-      AppLogger.i('Player kicked: $userId', category: LogCategory.system);
+      debugPrint('Player kicked: $userId');
 
       // Also tell the engine if it's running
       _hostEngine?.kickPlayer(userId);
@@ -403,7 +403,7 @@ class GameSessionNotifier extends StateNotifier<GameEntity> {
       await repository.banPlayer(state.gamePin, userId);
 
       // Log the ban (handled by repository layer)
-      AppLogger.w('Player banned: $userId', category: LogCategory.system);
+      debugPrint('Player banned: $userId');
 
       // Also tell the engine if it's running
       _hostEngine?.kickPlayer(userId);
@@ -424,7 +424,7 @@ class GameSessionNotifier extends StateNotifier<GameEntity> {
     // 1. Check Connectivity First (Optimistic Offline Queue)
     final online = await connectivityService.isOnline;
     if (!online) {
-      AppLogger.d('Device is offline. Queuing answer for sync.', category: LogCategory.system);
+      debugPrint('Device is offline. Queuing answer for sync.');
       unawaited(syncQueueService.queueAction(
         action: 'submit-answer',
         gamePin: state.gamePin,
@@ -437,9 +437,9 @@ class GameSessionNotifier extends StateNotifier<GameEntity> {
     try {
       await repository.submitAnswer(state.gamePin, answerIndex, 0,
           isDoubleDown: isDoubleDown);
-      AppLogger.d('Answer submitted successfully.', category: LogCategory.system);
+      debugPrint('Answer submitted successfully.');
     } catch (e, s) {
-      AppLogger.e('Failed to submit answer to server. Queuing for sync.', category: LogCategory.system);
+      debugPrint('Failed to submit answer to server. Queuing for sync.');
       unawaited(syncQueueService.queueAction(
         action: 'submit-answer',
         gamePin: state.gamePin,
@@ -561,7 +561,7 @@ class GameSessionNotifier extends StateNotifier<GameEntity> {
       // Check limit if applicable
       if (state.teamMemberLimit > 0 &&
           currentTeams[teamIndex].members.length >= state.teamMemberLimit) {
-        AppLogger.w('Team $teamName is full', category: LogCategory.system);
+        debugPrint('Team $teamName is full');
         return;
       }
 
