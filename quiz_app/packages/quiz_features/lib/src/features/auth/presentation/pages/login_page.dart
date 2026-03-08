@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../providers/auth_provider.dart';
+import '../widgets/turnstile_captcha_dialog.dart';
 
 import 'package:quiz_ui_core/quiz_ui_core.dart';
 import 'package:quiz_domain/quiz_domain.dart';
@@ -28,8 +29,11 @@ class _LoginPageState extends ConsumerState<LoginPage>
 
   Future<void> _initialize() async {
     try {
-      const clientId =
-          '550421245571-rlqquem056b4ob4ore7o6i97dob1frb8.apps.googleusercontent.com';
+      final clientId = AppConfig.googleOauthClientId;
+      if (clientId.isEmpty) {
+        debugPrint('GOOGLE_OAUTH_CLIENT_ID is not configured in .env');
+        return;
+      }
       await (_googleSignIn as dynamic).initialize(
         clientId: clientId,
         serverClientId: clientId,
@@ -97,6 +101,17 @@ class _LoginPageState extends ConsumerState<LoginPage>
             borderRadius: BorderRadius.circular(AppRadius.md)),
       ));
     }
+  }
+
+  /// Guest (anonymous) sign-in with Turnstile CAPTCHA gate.
+  /// The CAPTCHA prevents automated bot sign-ups.
+  /// Gate is client-side until TURNSTILE_SECRET is set in
+  /// Supabase Dashboard → Edge Functions → Secrets for server-side validation.
+  Future<void> _handleAnonymousSignIn() async {
+    final token = await showTurnstileDialog(context);
+    if (!mounted) return;
+    if (token == null) return; // User cancelled challenge
+    await ref.read(authStateProvider.notifier).signInAnonymously();
   }
 
   Future<void> _handleSSOSignIn() async {
@@ -264,6 +279,27 @@ class _LoginPageState extends ConsumerState<LoginPage>
                             icon: const Icon(Icons.login_rounded, size: 20),
                           ).animate().shimmer(
                               duration: 2.seconds, color: Colors.white24),
+                          const SizedBox(height: AppSpacing.sm),
+                          OutlinedButton.icon(
+                            onPressed: isLoading ? null : _handleAnonymousSignIn,
+                            style: OutlinedButton.styleFrom(
+                              foregroundColor: AppColors.secondary,
+                              side: const BorderSide(
+                                  color: AppColors.secondary, width: 1),
+                              shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.circular(AppRadius.md),
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: AppSpacing.lg,
+                                  vertical: AppSpacing.sm),
+                            ),
+                            icon: const Icon(Icons.person_outline_rounded,
+                                size: 18),
+                            label: Text('Continue as Guest',
+                                style: AppTypography.bodySmall
+                                    .copyWith(color: AppColors.secondary)),
+                          ),
                           const SizedBox(height: AppSpacing.md),
                           TextButton.icon(
                             onPressed: isLoading ? null : _handleSSOSignIn,
