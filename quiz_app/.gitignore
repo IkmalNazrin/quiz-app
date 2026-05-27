@@ -50,6 +50,11 @@ app.*.map.json
 .env.*
 !.env.example
 
+# Build artifacts and test cache (do not commit)
+packages/quiz_infrastructure/build/
+**/build/test_cache/
+**/build/
+
 # Firebase / Google Services
 android/app/google-services.json
 ios/Runner/GoogleService-Info.plist
